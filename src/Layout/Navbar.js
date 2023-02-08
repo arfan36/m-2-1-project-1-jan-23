@@ -1,30 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import { IoIosListBox } from "react-icons/io";
 import { BsFillCartFill } from "react-icons/bs";
 
 const Navbar = () => {
 	return (
-		<nav className='h-14 bg-indigo-200 rounded-full m2 max-w-7xl mx-auto px-5'>
-			<ul className='h-full mx-auto flex justify-between items-center gap-3 font-semibold text-lg'>
-				<h1 className='flex-1'>Moon Tech</h1>
+		<nav className="h-14 bg-indigo-200 rounded-full m2 max-w-7xl mx-auto px-5">
+			<ul className="h-full mx-auto flex justify-between items-center gap-3 font-semibold text-lg">
+				<h1 className="flex-1">
+					<Link to={"/"}>Moon Tech</Link>
+				</h1>
 				<li>
-					<Link to={'/'}>Home</Link>
+					<Link to={"/"}>Home</Link>
 				</li>
 				<li>
-					<Link to={'/'}>Top Rated</Link>
+					<Link to={"/top-rated"}>Top Rated</Link>
 				</li>
 				<li>
-					<Link to={'/'}>About</Link>
+					<Link to={"/about"}>About</Link>
 				</li>
-				<li title='Wishlist' className='bg-indigo-500 p-2 rounded-full'>
-					<Link to={'/'}>
-						<IoIosListBox className='text-white' />
+				<li
+					title="Wishlist"
+					className="bg-indigo-500 p-2 rounded-full"
+				>
+					<Link to={"/"}>
+						<IoIosListBox className="text-white" />
 					</Link>
 				</li>
-				<li title='cart' className='bg-indigo-500 p-2 rounded-full'>
-					<Link to={'/'}>
-						<BsFillCartFill className='text-white' />
+				<li
+					title="cart"
+					className="bg-indigo-500 p-2 rounded-full"
+				>
+					<Link to={"/cart"}>
+						<BsFillCartFill className="text-white" />
 					</Link>
 				</li>
 			</ul>
