@@ -37,7 +37,7 @@ const ProductCard = ({
 									onClick={() => {
 										dispatch({
 											type: actionTypes.REMOVE_FROM_CART,
-											removeItem: product,
+											payload: product,
 										});
 									}}
 								>
@@ -66,7 +66,7 @@ const ProductCard = ({
 									onClick={() => {
 										dispatch({
 											type: actionTypes.REMOVE_FROM_WISHLIST,
-											removeItem: product,
+											payload: product,
 										});
 									}}
 								>
@@ -82,6 +82,9 @@ const ProductCard = ({
 											payload: product,
 										});
 									}}
+									disabled={
+										state?.cart?.filter((product) => product._id === _id).length
+									}
 								>
 									<MdOutlinePlaylistAdd />
 								</button>
