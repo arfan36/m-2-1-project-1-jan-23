@@ -3,6 +3,7 @@ import About from "../pages/About";
 import Cart from "../pages/Cart";
 import Home from "../pages/Home";
 import TopRated from "../pages/TopRated";
+import Wishlist from "../pages/Wishlist";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -16,16 +17,20 @@ const routes = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: 'about',
-				element: <About></About>
+				path: "about",
+				element: <About></About>,
 			},
 			{
-				path: 'top-rated',
-				element: <TopRated></TopRated>
+				path: "top-rated",
+				element: <TopRated></TopRated>,
 			},
 			{
-				path: 'cart',
-				element: <Cart></Cart>
+				path: "/wishlist",
+				element: <Wishlist></Wishlist>,
+			},
+			{
+				path: "cart",
+				element: <Cart></Cart>,
 			},
 		],
 	},

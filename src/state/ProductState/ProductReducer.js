@@ -48,6 +48,15 @@ export const productReducer = (state, action) => {
 				...state,
 				wishlist: [...state.wishlist, action.payload],
 			};
+		case actionTypes.REMOVE_FROM_WISHLIST:
+			return {
+				...state,
+				wishlist: [
+					...state?.wishlist?.filter(
+						(product) => product._id !== action.removeItem._id
+					),
+				],
+			};
 		default:
 			return state;
 	}

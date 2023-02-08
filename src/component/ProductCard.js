@@ -34,9 +34,14 @@ const ProductCard = ({
 							{state?.cart?.filter((product) => product._id === _id).length ? (
 								<button
 									className="btn btn-sm btn-primary w-4/5 rounded-full"
-									disabled
+									onClick={() => {
+										dispatch({
+											type: actionTypes.REMOVE_FROM_CART,
+											removeItem: product,
+										});
+									}}
 								>
-									Item Added to Cart
+									Remove From cart
 								</button>
 							) : (
 								<button
@@ -53,13 +58,14 @@ const ProductCard = ({
 							)}
 						</>
 						<>
-							{state?.cart?.filter((product) => product._id === _id).length ? (
+							{state?.wishlist?.filter((product) => product._id === _id)
+								.length ? (
 								<button
 									className="btn btn-sm btn-primary text-2xl w-1/5 rounded-full"
-									title="Remove from cart"
+									title="Remove from wishlist"
 									onClick={() => {
 										dispatch({
-											type: actionTypes.REMOVE_FROM_CART,
+											type: actionTypes.REMOVE_FROM_WISHLIST,
 											removeItem: product,
 										});
 									}}
@@ -70,6 +76,12 @@ const ProductCard = ({
 								<button
 									className="btn btn-sm btn-primary text-2xl w-1/5 rounded-full"
 									title="Add to wishlist"
+									onClick={() => {
+										dispatch({
+											type: actionTypes.ADD_TO_WISHLIST,
+											payload: product,
+										});
+									}}
 								>
 									<MdOutlinePlaylistAdd />
 								</button>
