@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import ProductCard from "../component/ProductCard";
 
 const Home = () => {
@@ -9,6 +10,9 @@ const Home = () => {
 			.then((res) => res.json())
 			.then((data) => set_products(data));
 	}, []);
+
+	const state = useSelector((state) => state);
+	console.log("state :>> ", state);
 
 	return (
 		<>

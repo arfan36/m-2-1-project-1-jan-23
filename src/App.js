@@ -1,18 +1,16 @@
-import { createContext, useEffect, useState } from "react";
+import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import ProductProvider from "./context/ProductProvider";
+// import ProductProvider from "./context/ProductProvider";
+import store from "./redux/store";
 import routes from "./routes/routes";
 
-
 function App() {
-
-
 	return (
 		<div>
-			<ProductProvider>
+			<Provider store={store}>
 				<RouterProvider router={routes} />
-			</ProductProvider>
+			</Provider>
 		</div>
 	);
 }
