@@ -1,8 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { BiListPlus } from "react-icons/bi";
+import { ADD_TO_CART } from "../redux/actionTypes/actionTypes";
+import { addToCart } from "../redux/actionCreators/productActions";
 
 const ProductCard = ({
-	product: { image, keyFeature, model, price, rating, spec, status },
+	product,
+	product: { image, keyFeature, model, rating },
 }) => {
+	const dispatch = useDispatch();
+
 	return (
 		<div className="m-4">
 			<div className="card w-96 bg-base-100 shadow-xl h-full">
@@ -23,8 +30,19 @@ const ProductCard = ({
 							{feature}
 						</p>
 					))}
-					<div className="card-actions justify-end">
-						<button className="btn btn-primary">Buy Now</button>
+					<div className="flex gap-2">
+						<button
+							onClick={() => dispatch(addToCart(product))}
+							className="btn btn-primary btn-sm w-5/6"
+						>
+							Buy Now
+						</button>
+						<button
+							title="Add to wishlist"
+							className="btn btn-primary btn-sm rounded-full w-1/6"
+						>
+							<BiListPlus className="text-2xl" />
+						</button>
 					</div>
 				</div>
 			</div>

@@ -31,6 +31,4 @@ const Home = () => {
 	);
 };
 
-// change git push comment
-
 export default Home;
