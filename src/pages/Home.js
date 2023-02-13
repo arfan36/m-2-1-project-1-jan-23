@@ -1,35 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../component/ProductCard";
-import { useProducts } from "../context/ProductProvider";
 
 const Home = () => {
-	const {
-		state: { products, loading, error },
-	} = useProducts();
+	const [products, set_products] = useState([]);
 
-	let content;
-	if (loading) {
-		content = <p>Loading</p>;
-	}
-	if (error) {
-		content = <p>Something went wrong</p>;
-	}
-	if (!loading && !error && products.length === 0) {
-		content = <p>Nothing to show, product list is empty</p>;
-	}
-	if (!loading && !error && products.length) {
-		content = products.map((product) => (
-			<ProductCard
-				key={product._id}
-				product={product}
-			/>
-		));
-	}
+	useEffect(() => {
+		fetch("products.json")
+			.then((res) => res.json())
+			.then((data) => set_products(data));
+	}, []);
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 justify-items-center ">
-			{content}
-		</div>
+		<>
+			<h1 className="text-center text-2xl mt-4">
+				This is home: {products.length}
+			</h1>
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 justify-items-center ">
+				{products.map((product) => (
+					<ProductCard
+						key={product._id}
+						product={product}
+					></ProductCard>
+				))}
+			</div>
+		</>
 	);
 };
 
