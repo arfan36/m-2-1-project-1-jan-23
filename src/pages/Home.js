@@ -12,7 +12,7 @@ const Home = () => {
 	}, []);
 
 	const state = useSelector((state) => state);
-	console.log("state :>> ", state);
+	// console.log("state :>> ", state);
 
 	return (
 		<>
