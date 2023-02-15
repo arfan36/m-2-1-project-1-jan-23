@@ -11,14 +11,19 @@ import { useLocation } from "react-router-dom";
 
 const ProductCard = ({
 	product,
-	product: { image, keyFeature, model, rating },
+	product: { image, keyFeature, model, rating, quantity },
 }) => {
 	const dispatch = useDispatch();
 	const { pathname } = useLocation();
 
 	return (
 		<div className="m-4">
-			<div className="card w-96 bg-base-100 shadow-xl h-full">
+			<div className="card w-96 bg-base-100 shadow-xl h-full relative">
+				{pathname.includes("cart") && (
+					<div className="grid place-items-center bg-indigo-500 text-white rounded-full absolute top-2 right-2 px-2">
+						<p>{quantity}</p>
+					</div>
+				)}
 				<figure>
 					<img
 						src={image}
